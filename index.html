@@ -32,52 +32,82 @@ body {
 /* ─── NAV ─── */
 nav {
   position: sticky; top: 0; z-index: 200;
-  background: var(--paper);
-  border-bottom: 1px solid var(--ink-15);
-  display: flex; align-items: center; justify-content: center;
-  padding: 0 2.5rem; height: 60px;
-  margin: 0;
-  transition: background 0.2s, box-shadow 0.2s;
-}
-nav.scrolled {
-  background: rgba(245,242,236,0.95);
-  backdrop-filter: blur(14px);
-  box-shadow: 0 1px 8px rgba(0,0,0,0.04);
-}
-.nav-links {
-  display: flex; gap: 2.5rem;
+  background: var(--deep);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
   align-items: center;
+  padding: 0 2.5rem; height: 60px;
+  gap: 2rem;
+}
+.nav-name {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 1.05rem; font-weight: 700;
+  color: #fff; text-decoration: none;
+  letter-spacing: -0.005em;
+}
+.nav-name:hover { color: var(--accent); }
+.nav-links {
+  display: flex; gap: 2rem;
+  align-items: center;
+  justify-content: center;
 }
 .nav-links a {
   font-family: 'Crimson Pro', Georgia, serif;
-  font-size: 0.95rem; font-weight: 500;
-  color: var(--ink); text-decoration: none;
+  font-size: 0.9rem; font-weight: 500;
+  color: rgba(255,255,255,0.55); text-decoration: none;
   position: relative;
-  padding: 0.4rem 0;
+  padding: 0.35rem 0;
   letter-spacing: 0.01em;
   transition: color 0.18s;
 }
 .nav-links a::after {
   content: '';
-  position: absolute; left: 0; right: 0; bottom: 0;
+  position: absolute; left: 0; right: 0; bottom: -2px;
   height: 2px; background: var(--accent);
   transform: scaleX(0); transform-origin: center;
   transition: transform 0.22s ease;
 }
-.nav-links a:hover { color: var(--accent); }
+.nav-links a:hover { color: #fff; }
 .nav-links a:hover::after { transform: scaleX(1); }
+.nav-cta {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 0.82rem; font-weight: 600;
+  color: #fff; text-decoration: none;
+  background: var(--accent);
+  padding: 0.5rem 1rem; border-radius: 3px;
+  transition: background 0.15s;
+}
+.nav-cta:hover { background: #A04430; }
 
 /* ─── HERO ─── */
 .hero {
   display: grid;
   grid-template-columns: 1fr 380px;
+  align-items: stretch;
 }
 .hero-left {
   background: var(--deep);
-  padding: 3.5rem 4rem 3.5rem 5rem;
-  display: flex; flex-direction: column; justify-content: center;
+  padding: 4rem 4rem 4rem 5rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 3rem;
+  align-items: center;
   position: relative;
 }
+.hero-content { max-width: 560px; }
+.hero-photo {
+  width: 200px; height: 240px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 3px;
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(255,255,255,0.25);
+  font-size: 0.7rem;
+  text-align: center; padding: 1rem;
+  background-image: linear-gradient(135deg, rgba(139,58,42,0.05) 0%, rgba(255,255,255,0.02) 100%);
+}
+.hero-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 3px; }
 .hero-eyebrow {
   font-size: 0.72rem; font-weight: 300;
   color: rgba(255,255,255,0.3);
@@ -193,6 +223,54 @@ section { padding: 3.5rem 0; }
   font-size: 0.78rem; color: var(--ink-40);
   margin-bottom: 1.8rem; max-width: 500px;
   line-height: 1.6; font-weight: 300;
+}
+
+/* ─── ABOUT ─── */
+#about { background: var(--paper); padding: 4rem 0 3.5rem; }
+.about-grid {
+  display: grid;
+  grid-template-columns: 100px 1fr 200px;
+  gap: 3rem;
+  align-items: start;
+}
+.about-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--ink-40);
+  padding-top: 0.5rem;
+  border-top: 2px solid var(--accent);
+  width: fit-content;
+}
+.about-body p {
+  font-size: 0.92rem; line-height: 1.7;
+  color: var(--ink-70); margin-bottom: 1rem;
+  font-weight: 400;
+}
+.about-body p:last-child { margin-bottom: 0; }
+.about-lead {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: 1.4rem !important; line-height: 1.4 !important;
+  font-weight: 400 !important; color: var(--ink) !important;
+  margin-bottom: 1.5rem !important;
+}
+.hl-accent { color: var(--accent); font-style: italic; }
+.about-meta {
+  border-left: 1px solid var(--ink-15);
+  padding-left: 1.5rem;
+}
+.about-meta-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink-40); margin-bottom: 0.6rem;
+}
+.about-meta-label:not(:first-child) { margin-top: 1.4rem; }
+.about-list {
+  list-style: none; padding: 0; margin: 0;
+}
+.about-list li {
+  font-size: 0.78rem; color: var(--ink-70);
+  padding: 0.2rem 0;
+  line-height: 1.4;
 }
 
 /* ─── RESEARCH ─── */
@@ -475,8 +553,16 @@ footer {
 /* ─── RESPONSIVE ─── */
 @media (max-width: 900px) {
   .hero { grid-template-columns: 1fr; }
-  .hero-left { padding: 3rem 2rem; min-height: 55vh; }
+  .hero-left { padding: 2.5rem 1.5rem; grid-template-columns: 1fr; gap: 1.5rem; }
+  .hero-photo { width: 140px; height: 170px; justify-self: start; }
   .hero-right { padding: 2rem; }
+  .about-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .about-meta { border-left: none; padding-left: 0; border-top: 1px solid var(--ink-15); padding-top: 1.5rem; }
+  nav { padding: 0 1rem; gap: 1rem; grid-template-columns: auto 1fr auto; }
+  .nav-links { gap: 1rem; overflow-x: auto; }
+  .nav-links a { font-size: 0.75rem; white-space: nowrap; }
+  .nav-name { font-size: 0.9rem; }
+  .nav-cta { font-size: 0.7rem; padding: 0.4rem 0.7rem; }
   nav { padding: 0 1.5rem; }
   .nav-links a { font-size: 0.6rem; padding: 0.25rem 0.4rem; }
   .wrap { padding: 0 1.5rem; }
@@ -488,9 +574,22 @@ footer {
 </style>
 </head>
 <body>
+<nav id="mainNav">
+  <a href="#" class="nav-name">Paul Reeping</a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#research">Research</a>
+    <a href="#writing">Writing</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+  </div>
+  <a href="mailto:paul.reeping@gmail.com" class="nav-cta">Get in touch</a>
+</nav>
 
 <section class="hero">
   <div class="hero-left">
+    <div class="hero-content">
     <div class="hero-eyebrow">Director of Data &amp; Research &middot; Vital City NYC</div>
     <h1>Paul Michael<em>Reeping</em></h1>
     <p class="hero-text">
@@ -500,6 +599,10 @@ footer {
       <a href="mailto:paul.reeping@gmail.com">Contact</a>
       <a href="https://scholar.google.com/citations?user=_4EquJcAAAAJ&hl=en" target="_blank">Google Scholar</a>
       <a href="https://pubmed.ncbi.nlm.nih.gov/?term=Reeping+P" target="_blank">PubMed</a>
+    </div>
+    </div>
+    <div class="hero-photo">
+      <span>Photo<br>coming soon</span>
     </div>
   </div>
   <div class="hero-right">
@@ -518,15 +621,36 @@ footer {
   </div>
 </section>
 
-<nav id="mainNav">
-  <div class="nav-links">
-    <a href="#research">Research</a>
-    <a href="#writing">Writing</a>
-    <a href="#projects">Projects</a>
-    <a href="#experience">Experience</a>
-    <a href="#education">Education</a>
+<section id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-label">About</div>
+      <div class="about-body">
+        <p class="about-lead">I work at the intersection of <span class="hl-accent">epidemiology</span>, <span class="hl-accent">data engineering</span>, and <span class="hl-accent">public-interest design</span>.</p>
+        <p>For more than a decade, I've used the methods of disease epidemiology &mdash; causal inference, surveillance, geospatial analysis &mdash; to study gun violence and urban safety. My research has appeared in <em>The Lancet</em>, <em>BMJ</em>, <em>JAMA Surgery</em>, <em>JAMA Psychiatry</em>, and over two dozen other peer-reviewed journals, and has been cited more than 600 times.</p>
+        <p>At Vital City, I direct data and research strategy, build interactive tools used by journalists, policymakers, and the public, and write data-driven analysis on what's happening in New York City. I designed and built every public data tool you'll see below.</p>
+      </div>
+      <div class="about-meta">
+        <div class="about-meta-label">Methods</div>
+        <ul class="about-list">
+          <li>Causal inference</li>
+          <li>Quasi-experimental design</li>
+          <li>Geospatial analysis</li>
+          <li>Time-series modeling</li>
+          <li>Survey methods</li>
+        </ul>
+        <div class="about-meta-label">Tools</div>
+        <ul class="about-list">
+          <li>R / Stata / SAS</li>
+          <li>JavaScript / D3 / Deck.gl</li>
+          <li>Flourish / Datawrapper</li>
+          <li>QGIS / PostGIS</li>
+          <li>Git / GitHub Pages</li>
+        </ul>
+      </div>
+    </div>
   </div>
-</nav>
+</section>
 
 <section id="research">
   <div class="wrap">
@@ -735,16 +859,7 @@ fp();
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});},{threshold:0.06});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
 
-// Add subtle background blur to nav once scrolled past hero
-const mainNav = document.getElementById('mainNav');
-const heroEl = document.querySelector('.hero');
-window.addEventListener('scroll', () => {
-  if (heroEl && mainNav) {
-    const heroBottom = heroEl.getBoundingClientRect().bottom;
-    if (heroBottom <= 0) mainNav.classList.add('scrolled');
-    else mainNav.classList.remove('scrolled');
-  }
-}, { passive: true });
+
 </script>
 </body>
 </html>
