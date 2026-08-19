@@ -282,86 +282,66 @@ nav {
 
 /* ─── PROJECTS ──────────────────────────────────── */
 #projects { padding: 4.5rem 0; background: var(--bg); }
-.projects-list { display: flex; flex-direction: column; gap: 1px; border: 1px solid var(--rule); }
-.proj-row {
-  display: grid; grid-template-columns: 280px 1fr;
-  background: var(--paper); transition: background 0.15s;
-}
-.proj-row:hover { background: var(--bg); }
-.proj-img-wrap { position: relative; overflow: hidden; height: 180px; }
-.proj-img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; background: var(--ink); }
+.projects-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.4rem; }
+.proj-card { border: 1px solid var(--rule); background: var(--paper); overflow: hidden; display: flex; flex-direction: column; }
+.proj-head { padding: 1.3rem 1.4rem 1.1rem; flex: 1; display: flex; flex-direction: column; }
+.proj-topline { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.45rem; flex-wrap: wrap; }
+.proj-name { font-family: 'Playfair Display', serif; font-size: 1.02rem; font-weight: 700; color: var(--ink); line-height: 1.25; }
 .proj-label {
-  position: absolute; top: 0.8rem; left: 0.8rem;
-  font-family: 'JetBrains Mono', monospace; font-size: 0.58rem;
+  font-family: 'JetBrains Mono', monospace; font-size: 0.55rem;
   letter-spacing: 0.12em; text-transform: uppercase;
-  padding: 0.18rem 0.45rem; border-radius: 2px;
+  padding: 0.16rem 0.45rem; border-radius: 2px; white-space: nowrap;
 }
 .proj-label.solo { background: var(--ink); color: #fff; }
-.proj-label.personal { background: transparent; color: rgba(255,255,255,0.85); border: 1px solid rgba(255,255,255,0.5); }
 .proj-label.directed { background: var(--accent); color: #fff; }
-.proj-label.personal { background: transparent; color: rgba(255,255,255,0.85); border: 1px solid rgba(255,255,255,0.5); }
-.proj-info { padding: 1.5rem 2rem; display: flex; flex-direction: column; justify-content: center; gap: 0.6rem; }
-.proj-name { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: var(--ink); line-height: 1.25; }
-.proj-desc { font-size: 0.87rem; color: var(--ink-50); line-height: 1.65; }
+.proj-label.personal { background: transparent; color: var(--ink-50); border: 1px solid var(--rule); }
+.proj-desc { font-size: 0.82rem; color: var(--ink-50); line-height: 1.6; margin-bottom: 0.85rem; flex: 1; }
+.proj-foot { display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; }
 .proj-tech { display: flex; gap: 0.35rem; flex-wrap: wrap; }
-.proj-tech span { font-family: 'JetBrains Mono', monospace; font-size: 0.58rem; letter-spacing: 0.07em; background: var(--ink-08); color: var(--ink-50); padding: 0.14rem 0.42rem; border-radius: 2px; }
-.proj-link { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); text-decoration: none; font-weight: 500; align-self: flex-start; }
+.proj-tech span { font-family: 'JetBrains Mono', monospace; font-size: 0.56rem; letter-spacing: 0.07em; background: var(--ink-08); color: var(--ink-50); padding: 0.14rem 0.42rem; border-radius: 2px; }
+.proj-link { font-family: 'JetBrains Mono', monospace; font-size: 0.63rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); text-decoration: none; font-weight: 500; margin-left: auto; }
 .proj-link:hover { color: var(--ink); }
 
-/* ─── EXPERIENCE ────────────────────────────────── */
-#experience { padding: 4.5rem 0; background: var(--paper); }
-.exp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 3rem; }
-.exp-item { padding: 1.4rem 0; border-top: 1px solid var(--rule); }
-.exp-period {
-  font-family: 'JetBrains Mono', monospace; font-size: 0.62rem;
-  letter-spacing: 0.08em; color: var(--ink-50); margin-bottom: 0.45rem;
+/* live embed */
+.proj-frame {
+  position: relative; height: 300px; overflow: hidden;
+  border-top: 1px solid var(--rule); background: var(--warm);
 }
-.exp-dot-row { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.3rem; }
-.exp-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ink-25); flex-shrink: 0; }
-.exp-dot.live { background: var(--accent); }
-.exp-role { font-family: 'Source Serif 4', serif; font-size: 1rem; font-weight: 600; color: var(--ink); }
-.exp-org { font-size: 0.82rem; color: var(--accent); margin-bottom: 0.5rem; }
-.exp-desc { font-size: 0.82rem; color: var(--ink-50); line-height: 1.6; }
-
-/* ─── EDUCATION ─────────────────────────────────── */
-#education { padding: 4.5rem 0; background: var(--bg); }
-.edu-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; border: 1px solid var(--rule); }
-.edu-card { background: var(--paper); padding: 2rem 1.8rem; position: relative; overflow: hidden; }
-.edu-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
-.edu-card.phd::before { background: var(--accent); }
-.edu-card.ms::before { background: var(--accent-mid); }
-.edu-card.bs::before { background: var(--ink-25); }
-.edu-degree-label {
-  font-family: 'JetBrains Mono', monospace; font-size: 0.6rem;
+.proj-frame iframe {
+  width: 250%; height: 750px; border: 0;
+  transform: scale(0.4); transform-origin: 0 0;
+  display: block;
+}
+.proj-shade {
+  position: absolute; inset: 0; cursor: pointer;
+  display: flex; align-items: flex-end; justify-content: center;
+  padding-bottom: 1rem;
+  background: linear-gradient(to bottom, transparent 65%, rgba(31,30,27,0.06) 100%);
+  transition: opacity 0.2s;
+}
+.proj-shade span {
+  font-family: 'JetBrains Mono', monospace; font-size: 0.56rem;
   letter-spacing: 0.14em; text-transform: uppercase;
-  margin-bottom: 0.6rem;
+  background: var(--ink); color: #fff;
+  padding: 0.35rem 0.8rem; border-radius: 2px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.18);
 }
-.edu-card.phd .edu-degree-label { color: var(--accent); }
-.edu-card.ms .edu-degree-label { color: var(--accent-mid); }
-.edu-card.bs .edu-degree-label { color: var(--ink-50); }
-.edu-school-name { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; line-height: 1.2; margin-bottom: 0.2rem; }
-.edu-loc { font-size: 0.78rem; color: var(--ink-50); margin-bottom: 0.9rem; }
-.edu-field-name { font-size: 0.88rem; font-weight: 600; margin-bottom: 0.25rem; }
-.edu-yr { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; background: var(--ink-08); color: var(--ink-50); padding: 0.14rem 0.38rem; border-radius: 2px; display: inline-block; margin-bottom: 0.8rem; }
-.edu-notes { font-size: 0.8rem; color: var(--ink-50); line-height: 1.6; }
-.edu-award { font-size: 0.78rem; color: var(--accent); margin-top: 0.5rem; font-style: italic; }
-
-/* ─── BOOKS ─────────────────────────────────────── */
-#books { padding: 4.5rem 0; background: var(--paper); }
-.books-list { display: flex; flex-direction: column; gap: 0; border: 1px solid var(--rule); }
-.book-row {
-  display: flex; gap: 1.5rem; align-items: flex-start;
-  padding: 1.3rem 1.5rem; border-bottom: 1px solid var(--rule);
-  background: var(--paper); transition: background 0.15s;
+.proj-frame.live .proj-shade { display: none; }
+.proj-loading {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'JetBrains Mono', monospace; font-size: 0.58rem;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-25);
 }
-.book-row:last-child { border-bottom: none; }
-.book-row:hover { background: var(--bg); }
-.book-index { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-style: italic; color: var(--rule); line-height: 1; flex-shrink: 0; width: 28px; text-align: right; padding-top: 0.1rem; }
-.book-content {}
-.book-title-text { font-size: 0.9rem; font-weight: 600; color: var(--ink); margin-bottom: 0.22rem; line-height: 1.45; }
-.book-vol { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--ink-50); letter-spacing: 0.04em; margin-bottom: 0.12rem; }
-.book-publisher { font-size: 0.78rem; color: var(--ink-50); }
-
+.proj-still { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+@media (max-width: 900px) {
+  .projects-list { grid-template-columns: 1fr; }
+}
+@media (max-width: 700px) {
+  .proj-frame { height: 260px; }
+  .proj-frame iframe { width: 320%; height: 830px; transform: scale(0.3125); }
+  .proj-link { margin-left: 0; }
+}
 
 /* ─── PRESS ─────────────────────────────────────── */
 #press { padding: 4.5rem 0; background: var(--warm); }
@@ -398,6 +378,49 @@ nav {
 .impact-src a:hover { color: var(--accent); border-bottom-color: var(--accent); }
 .impact-what { font-size: 0.84rem; color: var(--ink-50); line-height: 1.5; }
 @media (max-width: 700px) { .impact-row { flex-direction: column; gap: 0.2rem; } .impact-src { min-width: 0; } }
+
+
+/* ─── EXPERIENCE ────────────────────────────────── */
+#experience { padding: 4.5rem 0; background: var(--paper); }
+.exp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 3rem; }
+.exp-item { padding: 1.4rem 0; border-top: 1px solid var(--rule); }
+.exp-period { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; letter-spacing: 0.08em; color: var(--ink-50); margin-bottom: 0.45rem; }
+.exp-dot-row { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.3rem; }
+.exp-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ink-25); flex-shrink: 0; }
+.exp-dot.live { background: var(--accent); }
+.exp-role { font-family: 'Source Serif 4', serif; font-size: 1rem; font-weight: 600; color: var(--ink); }
+.exp-org { font-size: 0.82rem; color: var(--accent); margin-bottom: 0.5rem; }
+.exp-desc { font-size: 0.82rem; color: var(--ink-50); line-height: 1.6; }
+
+/* ─── EDUCATION ─────────────────────────────────── */
+#education { padding: 4.5rem 0; background: var(--bg); }
+.edu-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; border: 1px solid var(--rule); background: var(--rule); }
+.edu-card { background: var(--paper); padding: 2rem 1.8rem; position: relative; overflow: hidden; }
+.edu-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+.edu-card.phd::before { background: var(--accent); }
+.edu-card.ms::before { background: var(--accent-mid); }
+.edu-card.bs::before { background: var(--ink-25); }
+.edu-degree-label { font-family: 'JetBrains Mono', monospace; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.6rem; }
+.edu-card.phd .edu-degree-label { color: var(--accent); }
+.edu-card.ms .edu-degree-label { color: var(--accent-mid); }
+.edu-card.bs .edu-degree-label { color: var(--ink-50); }
+.edu-school-name { font-family: 'Playfair Display', serif; font-size: 1.05rem; font-weight: 700; line-height: 1.2; margin-bottom: 0.2rem; }
+.edu-loc { font-size: 0.78rem; color: var(--ink-50); margin-bottom: 0.9rem; }
+.edu-field-name { font-size: 0.88rem; font-weight: 600; margin-bottom: 0.25rem; }
+.edu-yr { font-family: 'JetBrains Mono', monospace; font-size: 0.62rem; background: var(--ink-08); color: var(--ink-50); padding: 0.14rem 0.38rem; border-radius: 2px; display: inline-block; margin-bottom: 0.8rem; }
+.edu-notes { font-size: 0.8rem; color: var(--ink-50); line-height: 1.6; }
+.edu-award { font-size: 0.78rem; color: var(--accent); margin-top: 0.5rem; font-style: italic; }
+
+/* ─── BOOKS ─────────────────────────────────────── */
+#books { padding: 4.5rem 0; background: var(--paper); }
+.books-list { display: flex; flex-direction: column; border: 1px solid var(--rule); }
+.book-row { display: flex; gap: 1.5rem; align-items: flex-start; padding: 1.3rem 1.5rem; border-bottom: 1px solid var(--rule); background: var(--paper); transition: background 0.15s; }
+.book-row:last-child { border-bottom: none; }
+.book-row:hover { background: var(--bg); }
+.book-index { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-style: italic; color: var(--ink-25); line-height: 1; flex-shrink: 0; width: 28px; text-align: right; padding-top: 0.1rem; }
+.book-title-text { font-size: 0.9rem; font-weight: 600; color: var(--ink); margin-bottom: 0.22rem; line-height: 1.45; }
+.book-vol { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--ink-50); letter-spacing: 0.04em; margin-bottom: 0.12rem; }
+.book-publisher { font-size: 0.78rem; color: var(--ink-50); }
 
 /* ─── FOOTER ─────────────────────────────────────── */
 footer {
@@ -712,14 +735,14 @@ const ARTICLES = [
 ];
 
 const PROJECTS = [
-  {name:"Summer Youth Employment Evidence Tracker",label:"Created independently",lc:"solo",desc:"An interactive synthesis of 26 studies of summer youth employment programs, from the 1978 Youth Incentive Entitlement pilots through a 2025 working paper, coded for effects on crime, employment and education. Each study is filterable by outcome, research design and setting, with comparison groups and significance levels stated for every finding.",tech:["Evidence synthesis","Study coding","Interactive filtering"],url:"https://vital-city-nyc.github.io/SYEP_evidence_tracker/",img:""},
-  {name:"NYC Census Explorer",label:"Created independently",lc:"solo",desc:"A mapping tool for exploring census variables across New York City geographies, with downloadable values at each level. Shares are calculated against each variable's own census universe rather than total population.",tech:["Census data","Geographic analysis","Data download"],url:"https://vital-city.github.io/census_explorer/",img:""},
-  {name:"Mahjong Points Scorer",label:"Personal project",lc:"personal",desc:"A Cantonese-rules mahjong scoring and tracking app built for personal use. Handles fan calculation, standings, game history, and live sync so several people can follow the same game from their own phones.",tech:["Scoring logic","Live sync","Mobile-first"],url:"https://revere2323.github.io/mahjong_points_scoring/",img:""},
-  {name:"NYC Historical Crime Explorer",label:"Directed",lc:"directed",desc:"Public-facing interactive tool exploring decades of NYC crime data across categories, precincts, and boroughs. Paul directed the project from conception to public launch, working with a team at Vital City.",tech:["Crime data","Data visualization","Public tool"],url:"https://www.vitalcitynyc.org/explorer/",img:"https://www.vitalcitynyc.org/content/images/2024/07/explorer-preview.png"},
-  {name:"Quarterly Crime Explorer",label:"Created independently",lc:"solo",desc:"Quarterly crime tracker for New York City, letting users explore recent trends across major felony categories with filtering by category and geography. Created independently for Vital City.",tech:["NYC Open Data","Trend analysis","Public tool"],url:"https://www.vitalcitynyc.org/quarterly-crime-explorer/",img:""},
-  {name:"NYC Summons Tracker",label:"Created independently",lc:"solo",desc:"Tracks NYC summons data over time, giving visibility into how enforcement patterns have shifted across the city.",tech:["NYC Open Data","Enforcement data","Time series"],url:"https://vitalcity2025.github.io/nyc-summons-tracker/",img:""},
-  {name:"NYC Assault Map",label:"Created independently",lc:"solo",desc:"Geospatial visualization of assault incidents across New York City, enabling exploration of where assaults concentrate and how those patterns vary.",tech:["Geospatial","Mapping","NYC Open Data"],url:"https://vitalcity2025.github.io/assault_map/",img:""},
-  {name:"Assault Historical Explorer",label:"Created independently",lc:"solo",desc:"Historical assault data explorer created independently as one component of a larger Vital City analysis page.",tech:["Historical data","Trend analysis"],url:"https://vitalcity2025.github.io/Assault_explorer/",img:""}
+  {name:"Summer Youth Employment Evidence Tracker",label:"Created independently",lc:"solo",desc:"An interactive synthesis of 26 studies of summer youth employment programs, from the 1978 Youth Incentive Entitlement pilots through a 2025 working paper, coded for effects on crime, employment and education. Filterable by outcome, research design and setting, with comparison groups and significance levels stated for every finding.",tech:["Evidence synthesis","Study coding","Interactive filtering"],url:"https://vital-city-nyc.github.io/SYEP_evidence_tracker/",embed:"https://vital-city-nyc.github.io/SYEP_evidence_tracker/"},
+  {name:"NYC Census Explorer",label:"Created independently",lc:"solo",desc:"A mapping tool for exploring census variables across New York City geographies, with downloadable values at each level. Shares are calculated against each variable's own census universe rather than total population.",tech:["Census data","Geographic analysis","Data download"],url:"https://vital-city.github.io/census_explorer/",embed:"https://vital-city.github.io/census_explorer/"},
+  {name:"Mahjong Points Scorer",label:"Personal project",lc:"personal",desc:"A Cantonese-rules mahjong scoring and tracking app built for personal use. Handles fan calculation, standings, game history, and live sync so several people can follow the same game from their own phones.",tech:["Scoring logic","Live sync","Mobile-first"],url:"https://revere2323.github.io/mahjong_points_scoring/",embed:"https://revere2323.github.io/mahjong_points_scoring/"},
+  {name:"NYC Historical Crime Explorer",label:"Directed",lc:"directed",desc:"Public-facing interactive tool drawing on more than 30 years of New York City crime data not available to the public anywhere else. Paul directed the project from conception to public launch, working with a team at Vital City.",tech:["Crime data","Data visualization","Public tool"],url:"https://www.vitalcitynyc.org/explorer/",still:"https://storage.ghost.io/c/20/8c/208caa48-0e58-40ee-862f-e5f1276ae3d0/content/images/2026/02/Treemap-desktop-5.jpg"},
+  {name:"Quarterly Crime Explorer",label:"Created independently",lc:"solo",desc:"Quarterly crime tracker for New York City, letting users parse detailed quarterly statistics that allow deeper analysis than weekly NYPD CompStat reports. Created independently for Vital City.",tech:["NYC Open Data","Trend analysis","Public tool"],url:"https://www.vitalcitynyc.org/quarterly-crime-explorer/",embed:"https://vital-city.github.io/quarterly_crime_dashboard/"},
+  {name:"NYC Summons Tracker",label:"Created independently",lc:"solo",desc:"Tracks NYC summons data over time, giving visibility into how enforcement patterns have shifted across the city.",tech:["NYC Open Data","Enforcement data","Time series"],url:"https://vitalcity2025.github.io/nyc-summons-tracker/",embed:"https://vitalcity2025.github.io/nyc-summons-tracker/"},
+  {name:"NYC Assault Map",label:"Created independently",lc:"solo",desc:"Geospatial visualization of assault incidents across New York City, enabling exploration of where assaults concentrate and how those patterns vary.",tech:["Geospatial","Mapping","NYC Open Data"],url:"https://vitalcity2025.github.io/assault_map/",embed:"https://vitalcity2025.github.io/assault_map/"},
+  {name:"Assault Historical Explorer",label:"Created independently",lc:"solo",desc:"Historical assault data explorer created independently as one component of a larger Vital City analysis page.",tech:["Historical data","Trend analysis"],url:"https://vitalcity2025.github.io/Assault_explorer/",embed:"https://vitalcity2025.github.io/Assault_explorer/"}
 ];
 
 const EXP = [
@@ -798,21 +821,53 @@ document.getElementById('ag').innerHTML = ARTICLES.map(a=>`
 `).join('');
 
 // ── RENDER PROJECTS ──
-document.getElementById('pj').innerHTML = PROJECTS.map(p=>`
-  <div class="proj-row">
-    <div class="proj-img-wrap">
-      ${p.img?`<img class="proj-img" src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.style.background='#2A2A1E'">`:
-      `<div class="proj-img" style="background:var(--ink);display:flex;align-items:center;justify-content:center;"><span style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,255,255,0.25);">Interactive</span></div>`}
-      <span class="proj-label ${p.lc}">${p.label}</span>
-    </div>
-    <div class="proj-info">
-      <div class="proj-name">${p.name}</div>
+document.getElementById('pj').innerHTML = PROJECTS.map((p,i)=>`
+  <div class="proj-card reveal">
+    <div class="proj-head">
+      <div class="proj-topline">
+        <span class="proj-name">${p.name}</span>
+        <span class="proj-label ${p.lc}">${p.label}</span>
+      </div>
       <div class="proj-desc">${p.desc}</div>
-      <div class="proj-tech">${p.tech.map(t=>`<span>${t}</span>`).join('')}</div>
-      <a href="${p.url}" target="_blank" class="proj-link">Launch project &rarr;</a>
+      <div class="proj-foot">
+        <div class="proj-tech">${p.tech.map(t=>`<span>${t}</span>`).join('')}</div>
+        <a href="${p.url}" target="_blank" class="proj-link">Open full tool &rarr;</a>
+      </div>
     </div>
+    ${p.embed?`
+    <div class="proj-frame" id="fr-${i}" data-src="${p.embed}">
+      <div class="proj-loading">Loading preview</div>
+      <div class="proj-shade" onclick="activateFrame(${i})"><span>Click to interact</span></div>
+    </div>`:
+    p.still?`<div class="proj-frame"><img class="proj-still" src="${p.still}" alt="${p.name}" loading="lazy"></div>`:''}
   </div>
 `).join('');
+
+function activateFrame(i){
+  const f=document.getElementById('fr-'+i);
+  if(f) f.classList.add('live');
+}
+
+// Lazy-load iframes only when scrolled near
+const frameObs = new IntersectionObserver((entries,obs)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const el=e.target, src=el.dataset.src;
+      if(src && !el.querySelector('iframe')){
+        const f=document.createElement('iframe');
+        f.src=src; f.loading='lazy';
+        f.setAttribute('scrolling','no');
+        f.setAttribute('sandbox','allow-scripts allow-same-origin allow-popups');
+        el.insertBefore(f, el.firstChild);
+        const l=el.querySelector('.proj-loading');
+        f.addEventListener('load',()=>{ if(l) l.remove(); });
+        setTimeout(()=>{ if(l) l.remove(); }, 6000);
+      }
+      obs.unobserve(el);
+    }
+  });
+},{rootMargin:'400px'});
+document.querySelectorAll('.proj-frame[data-src]').forEach(el=>frameObs.observe(el));
 
 
 const PRESS = [
